@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loyalty-deployment
+  labels:
+    app: loyalty-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: loyalty-service
+  template:
+    metadata:
+      labels:
+        app: loyalty-service
+    spec:
+      containers:
+      - name: loyalty-app
+        # C'est ici que nous avons mis ton image correcte
+        image: imen11/loyalty-points-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        env:
+        - name: PORT
+          value: "8081"
