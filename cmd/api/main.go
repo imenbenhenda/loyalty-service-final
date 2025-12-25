@@ -41,7 +41,7 @@ func main() {
 
 	// Health check
 	api.HandleFunc("/health", healthCheck).Methods("GET")
-	
+
 	// 2. Endpoint Metrics (Nouvelle consigne)
 	api.HandleFunc("/metrics", metricsHandler).Methods("GET")
 
@@ -90,10 +90,10 @@ func logJSON(level, message, reqID string) {
 func metricsHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	
+
 	// On récupère la valeur actuelle du compteur
 	count := atomic.LoadUint64(&requestCount)
-	
+
 	response := map[string]interface{}{
 		"total_requests": count,
 		"status":         "up",
