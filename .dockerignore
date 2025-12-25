@@ -1,0 +1,13 @@
+.git
+.gitignore
+README.md
+.dockerignore
+Dockerfile
+docker-compose.yml
+kubernetes/
+docs/
+tests/
+*.log
+.env
+.idea/
+.vscode/
