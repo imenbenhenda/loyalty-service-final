@@ -1,23 +1,77 @@
-# Loyalty Points Service 🚀
+# 🚀 Loyalty Points Service
 
-Un microservice backend écrit en Go pour gérer un système de points de fidélité.
+![Go Version](https://img.shields.io/badge/Go-1.21-blue.svg)
+![Docker](https://img.shields.io/badge/Docker-Enabled-blue)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-Ready-326ce5)
+![CI/CD](https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-green)
 
-## 📋 Fonctionnalités
-- **API REST** : Gestion des points.
-- **Observabilité** : Logs JSON et Métriques Prometheus (`/api/v1/metrics`).
-- **Sécurité** : Scans SAST (Gosec) et DAST (OWASP ZAP).
-- **CI/CD** : Pipeline GitHub Actions automatisée.
+Un microservice backend robuste écrit en **Go**, conçu pour gérer un système de points de fidélité. Ce projet démontre une approche **DevOps complète** : développement API, conteneurisation, orchestration et pipelines d'intégration continue.
 
-## 🛠️ Installation & Démarrage
+---
 
-### Pré-requis
-- Docker Desktop avec Kubernetes activé.
+## 📋 Fonctionnalités Clés
 
-### Déploiement Rapide
-```bash
-# 1. Déployer
-kubectl apply -f kubernetes/deployment.yaml
-kubectl apply -f kubernetes/service.yaml
+- **API RESTful** : Gestion des points clients (ajout, consultation).
+- **Architecture Cloud-Native** : Conçu pour tourner dans des conteneurs.
+- **Observabilité** :
+  - Logs structurés en JSON.
+  - Endpoint de santé (`/health`) pour les sondes Kubernetes.
+  - Métriques Prometheus (`/metrics`).
+- **Sécurité** : Scan de vulnérabilités (SAST) intégré dans la CI.
+- **CI/CD** : Automatisation complète via GitHub Actions.
 
-# 2. Accéder (Port-Forwarding)
-kubectl port-forward service/loyalty-service 8081:80
+---
+
+## 🛠️ Stack Technique
+
+- **Langage** : Go (Golang) 1.21
+- **Conteneur** : Docker (Multi-stage build sur Alpine Linux)
+- **Orchestration** : Kubernetes (Deployment & Service NodePort)
+- **CI/CD** : GitHub Actions (Build, Test, Push to DockerHub)
+
+---
+
+## 📂 Structure du Projet
+
+```text
+.
+├── cmd/api/            # Point d'entrée (main.go)
+├── internal/handlers/  # Logique métier (Business Logic)
+├── kubernetes/         # Manifestes d'infrastructure (IaC)
+│   ├── deployment.yaml
+│   └── service.yaml
+├── .github/workflows/  # Pipeline CI/CD
+├── Dockerfile          # Image Docker optimisée
+├── go.mod              # Dépendances Go
+└── README.md           # Documentation
+
+
+
+# Guide d'Installation et Démarrage
+Pré-requis
+1. Go 1.21+ (pour exécution locale)
+2.Docker Desktop (avec Kubernetes activé)
+3.Git
+## 1️⃣ Exécution Locale (Sans Docker)
+
+```text
+ 1. Cloner le projet
+git clone <votre-url-git>
+cd loyalty-points-service
+
+ 2. Installer les dépendances
+go mod download
+
+ 3. Lancer le serveur
+go run cmd/api/main.go
+# Ou si le main est à la racine : go run main.go
+
+## 🛠️ 2️⃣ Exécution avec Docker
+
+```text
+ 1. Construire l'image
+docker build -t loyalty-service:latest .
+
+2. Lancer le conteneur
+docker run -p 8081:8081 loyalty-service:latest
+
