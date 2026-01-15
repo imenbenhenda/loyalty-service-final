@@ -56,3 +56,35 @@ Un microservice backend robuste écrit en **Go**, conçu pour gérer un système
    
 ---
 1️⃣ Exécution Locale (Sans Docker)
+```
+# 1. Cloner le projet
+git clone <(https://github.com/imenbenhenda/loyalty-service-final)>
+cd loyalty-points-service
+
+# 2. Installer les dépendances
+go mod download
+
+# 3. Lancer le serveur
+go run cmd/api/main.go
+# (L'API sera accessible sur http://localhost:8081)
+```
+2️⃣ Exécution avec Docker
+```
+# 1. Construire l'image
+docker build -t loyalty-service:latest .
+
+# 2. Lancer le conteneur
+docker run -p 8081:8081 loyalty-service:latest
+```
+3️⃣ Déploiement Kubernetes (Production)
+```
+# 1. Déployer l'application
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+
+# 2. Vérifier les Pods
+kubectl get pods
+
+# 3. Accéder à l'application (Via Tunnel / Port-Forwarding)
+kubectl port-forward service/loyalty-service 8081:8081
+```
