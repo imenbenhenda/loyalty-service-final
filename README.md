@@ -37,41 +37,17 @@ Un microservice backend robuste écrit en **Go**, conçu pour gérer un système
 .
 ├── cmd/api/            # Point d'entrée (main.go)
 ├── internal/handlers/  # Logique métier (Business Logic)
-├── kubernetes/         # Manifestes d'infrastructure (IaC)
+├── k8s/                # Manifestes d'infrastructure (IaC)
 │   ├── deployment.yaml
 │   └── service.yaml
 ├── .github/workflows/  # Pipeline CI/CD
 ├── Dockerfile          # Image Docker optimisée
 ├── go.mod              # Dépendances Go
 └── README.md           # Documentation
+🚀 Guide d'Installation et Démarrage
+📋 Pré-requis
+   1. Go 1.21+ (pour exécution locale)
+   2. Docker Desktop (avec Kubernetes activé)
+   3. Git
 
-
-
-# Guide d'Installation et Démarrage
-Pré-requis
-1. Go 1.21+ (pour exécution locale)
-2.Docker Desktop (avec Kubernetes activé)
-3.Git
-## 1️⃣ Exécution Locale (Sans Docker)
-
-```text
- 1. Cloner le projet
-git clone <votre-url-git>
-cd loyalty-points-service
-
- 2. Installer les dépendances
-go mod download
-
- 3. Lancer le serveur
-go run cmd/api/main.go
-# Ou si le main est à la racine : go run main.go
-
-## 🛠️ 2️⃣ Exécution avec Docker
-
-```text
- 1. Construire l'image
-docker build -t loyalty-service:latest .
-
-2. Lancer le conteneur
-docker run -p 8081:8081 loyalty-service:latest
-
+1️⃣ Exécution Locale (Sans Docker)
