@@ -33,7 +33,7 @@ Un microservice backend robuste écrit en **Go**, conçu pour gérer un système
 
 ## 📂 Structure du Projet
 
-```text
+```
 .
 ├── cmd/api/            # Point d'entrée (main.go)
 ├── internal/handlers/  # Logique métier (Business Logic)
@@ -44,11 +44,15 @@ Un microservice backend robuste écrit en **Go**, conçu pour gérer un système
 ├── Dockerfile          # Image Docker optimisée
 ├── go.mod              # Dépendances Go
 └── README.md           # Documentation
+```
 ---
 🚀 Guide d'Installation et Démarrage
 📋 Pré-requis
-   1. Go 1.21+ (pour exécution locale)
-   2. Docker Desktop (avec Kubernetes activé)
-   3. Git
+```
+1.Go 1.21+ (pour exécution locale)
+2.Docker Desktop (avec Kubernetes activé)
+3.Git
+```
+   
 ---
 1️⃣ Exécution Locale (Sans Docker)
